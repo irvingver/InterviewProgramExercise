@@ -27,7 +27,7 @@ public class IPEMain {
 		
 		System.out.println("**************** WELCOME **************");
 		System.out.println("Please insert the path of your file: ");
-		System.out.println("Eg. cd:/src/app/resources/input1.txt");
+		System.out.println("E.g. cd:/src/app/resources/input1.txt");
 		String path = scanner.nextLine();
 		
 		System.out.println("\nInsert the order of the final list:");

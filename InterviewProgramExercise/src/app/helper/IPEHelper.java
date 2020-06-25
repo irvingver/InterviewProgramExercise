@@ -129,7 +129,7 @@ public class IPEHelper {
 	 * Return: String 
 	 */
 	public String stringFormatToFile(EmployerModel employer, int index) {
-		return "index"+
+		return index +
 				"\n\t" + employer.getFirstName() + " " + employer.getLastName() +
 				", (" + converDateToFileFormat(employer.getStartDate()) + ") ," +
 				"\n\t" + employer.getAddress1() + ", " + employer.getAddress2() + "," + 
