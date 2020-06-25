@@ -23,16 +23,22 @@ public class IPEHelper {
 	 */
 	public EmployerModel converLineNoCommasToEmployer(String strLine, int line) throws Exception {
 		EmployerModel employer = new EmployerModel();
-		
-		employer.setFirstName	(strLine.substring(0, 9).trim());
-		employer.setLastName	(strLine.substring(10, 26).trim());
-		employer.setStartDate	(convertStringToDate(strLine.substring(27,35)));
-		employer.setAddress1	(strLine.substring(35, 45).trim());
-		employer.setAddress2	(strLine.substring(45, 55).trim());
-		employer.setCity		(strLine.substring(55, 65).trim());
-		employer.setState		(strLine.substring(65, 67).trim());
-		employer.setCountry		(strLine.substring(67, 70).trim());
-		employer.setZip			(converStringToLong(strLine.substring(70)));
+		try {
+			employer.setFirstName	(strLine.substring(0, 9).trim());
+			employer.setLastName	(strLine.substring(10, 26).trim());
+			employer.setStartDate	(convertStringToDate(strLine.substring(27,35)));
+			employer.setAddress1	(strLine.substring(35, 45).trim());
+			employer.setAddress2	(strLine.substring(45, 55).trim());
+			employer.setCity		(strLine.substring(55, 65).trim());
+			employer.setState		(strLine.substring(65, 67).trim());
+			employer.setCountry		(strLine.substring(67, 70).trim());
+			employer.setZip			(converStringToLong(strLine.substring(70)));
+		}catch(StringIndexOutOfBoundsException e) {
+			System.out.println("Please check the input file line : " + line);
+			System.out.println("Every Line should have the below format including white spaces: ");
+			System.out.println("Jon       Abner            200312081 Jay St  Apt 498   Dublin    CA   49567");
+			throw e;
+		}
 		checkNoOptionalFields(employer, line);
 		checkDefaultValues(employer);
 		//System.out.println(employer.toString());

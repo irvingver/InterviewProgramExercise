@@ -6,13 +6,13 @@ package app.controller;
 import java.util.List;
 
 import app.model.EmployerModel;
-import app.service.IPEService;
+import app.service.IPEServiceImpl;
 
 /**
  * @author irvingvelazquez
  * @date June 25, 2020
  */
-public class IPEController implements IPEService{
+public class IPEController{
 	
 	/**
 	 * Function: Controller of the application
@@ -21,14 +21,16 @@ public class IPEController implements IPEService{
 	 */
 	public static void convertFileContentToEmployers(String path, String paramToOrder) throws Exception {
 		
-		/** Read Employer from File */
-		List<EmployerModel> employers = 	IPEService.readEmployersfromFile(path);
+		IPEServiceImpl ipeService = new IPEServiceImpl();
 		
-		/** Order the list of Employers by Parameter */
-		employers =  						IPEService.orderEmployerListByParam(employers, paramToOrder);
+		/** Read Employer from File */
+		List<EmployerModel> employers = 	ipeService.readEmployersfromFile(path);
+		
+		/** Order the list of Employers by PaipeServicerameter */
+		employers =  						ipeService.orderEmployerListByParam(employers, paramToOrder);
 		
 		/** Writhe the sorted list in output file */
-		IPEService.writeFileWithListOfEmployers(employers);
+		ipeService.writeFileWithListOfEmployers(employers);
 	}
 
 }
